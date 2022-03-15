@@ -81,16 +81,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const square1 = squares[winningsarrays[i][0]], square2 = squares[winningsarrays[i][1]], square3 = squares[winningsarrays[i][2]],
             square4 = squares[winningsarrays[i][3]]
             //Check those squares to see if they all have a class of player-xxx
-            if(square1.classList.contains('player-one') && square2.classList.contains('player-one') && square3.classList.contains('player-one') && square4.classList.contains('player-one')){
+            if(square1.classList.contains('player-one') && 
+            square2.classList.contains('player-one') && 
+            square3.classList.contains('player-one') && 
+            square4.classList.contains('player-one')){
                 result.innerHTML = 'Player One wins!'
-            }else if(square1.classList.contains('player-two') && square2.classList.contains('player-two') && square3.classList.contains('player-two') && square4.classList.contains('player-two')){
+            }else if(square1.classList.contains('player-two') && 
+            square2.classList.contains('player-two') && 
+            square3.classList.contains('player-two') && 
+            square4.classList.contains('player-two')){
                 result.innerHTML="Player Two wins!"
             }
         }
     }
 
     for(let i = 0; i < squares.length; i++){
-        squares[i].onClick = () => {
+        squares[i].onclick = () => {
             //alert('you have clicked square ' + i);
             //if square is taken you can go on top of it
             if(squares[i + 7].classList.contains('taken')  && !squares[i].classList.contains('taken')){
@@ -101,14 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     displayCurrentPlayer.innerHTML = currentPlayer
                 }
                 else if(currentPlayer = 2){
-                    quares[i].classList.add('taken')
+                    squares[i].classList.add('taken')
                     squares[i].classList.add('player-two')
                     currentPlayer = 1
                     displayCurrentPlayer.innerHTML = currentPlayer
                 }
-            }else {
-                alert('Cant go here')
-            }
+            }else alert('Cant go here')
             checkBoard()
         }
     }
