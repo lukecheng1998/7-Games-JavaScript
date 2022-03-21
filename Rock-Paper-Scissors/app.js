@@ -1,11 +1,26 @@
 const computerChoiceDisplay = document.getElementById('computer-choice')
 const userChoiceDisplay = document.getElementById('user-choice')
 const resultDisplay = document.getElementById('result')
-
+const resultantDisplay = dcument.getElementById("#resultant-image")
 const possibleChoices = document.querySelectorAll('button')
+
 let userChoice
 let computerChoice
 let result
+const images = [
+    {
+        name: "rock",
+        img: "rock.png"
+    },
+    {
+        name: "paper",
+        img: "paper.png"
+    },
+    {
+        name: "scissors",
+        img: "scissors.png"
+    }
+]
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
     userChoice = e.target.id
@@ -13,6 +28,18 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
     generateComputerChoice()
     getResult()
 }))
+function getImage() {
+    for(let i = 0; i < 2; i++){
+        const tempImg = document.createElement('img')
+        tempImg.setAttribute("data-id", i)
+        resultantDisplay.append(tempImg)
+    }
+}
+getImage()
+function setImage(index){
+    const imageId = this.getAttribute("data-id")
+    
+}
 function generateComputerChoice() {
     const randomNumber = Math.floor(Math.random() * possibleChoices.length) + 1
     if(randomNumber === 1){
